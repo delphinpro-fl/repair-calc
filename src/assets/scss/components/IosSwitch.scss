@@ -1,0 +1,120 @@
+//==
+//== Component: IosSwitch.vue
+//== ======================================= ==//
+
+.ios-switch {
+  $this: &;
+
+  display: inline-flex;
+  cursor: pointer;
+
+  &, * {
+    box-sizing: content-box
+  }
+
+  &__element {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+  }
+
+  &__indicator {
+    width: 40px;
+    height: 20px;
+    transition-duration: .4s;
+    transition-property: background-color, box-shadow;
+    vertical-align: middle;
+    border: 1px solid rgba(white, .4);
+    border-radius: 999px;
+    background-color: rgba(white, 0.4);
+    box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.4);
+  }
+
+  &__knob {
+    display: block;
+    float: left;
+    width: 18px;
+    height: 18px;
+    margin-top: 1px;
+    margin-left: 1px;
+    transition-timing-function: cubic-bezier(.54, 1.85, .5, 1);
+    transition-duration: 0.4s;
+    transition-property: transform, background-color, box-shadow;
+    pointer-events: none;
+    border-radius: inherit;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.4);
+  }
+
+  //==
+  //== Checked state
+  //== ======================================= ==//
+
+  &__element:checked + &__indicator {
+    border: 1px solid #0e62cd;
+    background-color: #3b89ec;
+    background-position: 0 0;
+    box-shadow: inset 0 0 0 10px rgba(59, 137, 259, 1);
+  }
+
+  &__element:checked + &__indicator > &__knob {
+    transform: translateX(20px);
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(8, 80, 172, 1);
+  }
+
+  //==
+  //== Small size
+  //== ======================================= ==//
+
+  &_size_small &__indicator {
+    width: 34px;
+    height: 18px;
+  }
+
+  &_size_small &__knob {
+    width: 16px;
+    height: 16px;
+    margin-top: 1px;
+  }
+
+  &_size_small &__element:checked + &__indicator > &__knob {
+    transform: translate3d(16px, 0, 0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(8, 80, 172, 1);
+  }
+
+  //==
+  //== Big size
+  //== ======================================= ==//
+
+  &_size_large &__indicator {
+    width: 50px;
+    height: 25px;
+  }
+
+  &_size_large &__knob {
+    width: 23px;
+    height: 23px;
+    margin-top: 1px;
+  }
+
+  &_size_large &__element:checked + &__indicator > &__knob {
+    transform: translate3d(25px, 0, 0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(8, 80, 172, 1);
+  }
+
+
+  //==
+  //== Green theme
+  //== ======================================= ==//
+
+  &_theme_green &__element:checked + &__indicator {
+    border: 1px solid rgba(0, 162, 63, 1);
+    background-color: #00e359;
+    box-shadow: inset 0 0 0 10px rgba(0, 227, 89, 1);
+  }
+
+  &_theme_green &__element:checked + &__indicator > &__knob {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 162, 63, 1);
+  }
+}
