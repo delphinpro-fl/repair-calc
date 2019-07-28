@@ -15,6 +15,9 @@
 @import "base/normalize";
 @import "base/init";
 @import "base/app";
+//@import "base/ios-switch";
+//@import "base/x-select";
+////@import "svg-icons.scss";
 @import "3rd-party/vue2-scrollbar";
 
 
@@ -22,9 +25,43 @@
 //== Blocks
 //== ======================================= ==//
 
+//@import "components/app-header";
+//@import "components/app-logo";
+//@import "components/app-menu";
+//@import "components/mainmenu";
+//@import "components/navmenu";
+//@import "components/radio";
+//@import "components/mainmenu";
 @import "block/gift";
+//@import "components/scroll-button";
+//@import "components/sreens";
+//@import "components/start-screen";
+//@import "components/question-screen";
+//@import "components/dot";
+//@import "components/rooms-definition";
+//@import "components/result-tabs";
+//@import "components/result-table";
+//@import "components/result";
+//@import "components/loading";
 
 
 //==
 //== Helpers and other
 //== ======================================= ==//
+//@import "../../../.source/sass/base/helpers";
+//@import "../../../.source/sass/dev-outline";
+//
+//.out {
+//  position: fixed;
+//  z-index: 99999999;
+//  left: 0;
+//  top: 0;
+//  max-width: 50%;
+//  pointer-events: none;
+//  background: rgba(black, 0.7);
+//  overflow: auto;
+//  height: 100%;
+//  color: #fff;
+//  padding: 1em;
+//  font-size: 12px;
+//}

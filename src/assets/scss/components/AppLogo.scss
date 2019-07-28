@@ -3,20 +3,43 @@
 //== ======================================= ==//
 
 .app-logo {
-  @include font(12px, 0.75);
-  font-weight: bold;
+  $line-height: 50px / 3;
+  @include font(11px, $line-height);
   display: flex;
   align-items: center;
   text-transform: uppercase;
+  font-weight: bold;
 
-  &__link {}
+  &__link {
+  }
 
   &__image {
-    height: rem($header-logo-height);
+    height: rem(50px);
     vertical-align: middle;
   }
 
   &__text {
+    padding-left: 1rem;
     cursor: default;
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include font(12px, 0.75);
+    &__image {
+      height: rem($header-logo-height * 0.75);
+    }
+    &__text {
+      padding-left: 0;
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    @include font(12px, 0.75);
+    &__image {
+      height: rem($header-logo-height);
+    }
+    &__text {
+      padding-left: 0;
+    }
   }
 }

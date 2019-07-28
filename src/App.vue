@@ -5,15 +5,24 @@
  * licensed under the MIT license
  */
 
+import AppHeader from '@/components/App/AppHeader';
+import AppMenu   from '@/components/App/AppMenu';
+
+
 export default {
     name: 'App',
+
+    components: {
+        AppHeader,
+        AppMenu,
+    },
 };
 </script>
 
 <template>
     <div class="app" id="app">
-        <div class="screens">
-            <router-view/>
-        </div>
+        <AppHeader></AppHeader>
+        <router-view/>
+        <AppMenu></AppMenu>
     </div>
 </template>

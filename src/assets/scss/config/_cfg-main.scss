@@ -14,6 +14,7 @@ $header-total-height: ($header-logo-height + $header-v-padding * 2);
 
 $brand-color: #fbf306;
 
-$scrollbar-color: #15e659;
+$scrollbar-color: $brand-color;
+$scrollbar-width: 5px;
 
 $app-menu-header-height: 80px;
