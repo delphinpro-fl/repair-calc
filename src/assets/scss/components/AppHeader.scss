@@ -1,0 +1,65 @@
+//==
+//== Component: AppHeader.vue
+//== ======================================= ==//
+
+.header {
+  position: fixed;
+  z-index: $z-header;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: rem($header-total-height);
+  transition: 0.3s ease background-color;
+  color: #fff;
+  text-shadow: -1px 0 1px rgba(#000, 1);
+
+  &.dark {
+    background-color: rgba(#000, 0.7);
+  }
+
+  &__container {
+    height: rem($header-total-height);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: rem($header-v-padding);
+    padding-bottom: rem($header-v-padding);
+  }
+
+  &__logo {
+    order: 1;
+  }
+
+  &__menu {
+    order: 4;
+    width: 100%;
+    margin-top: rhythm(0.5 + 0.125);
+  }
+
+  &__button {
+    order: 3;
+    color: #fff;
+
+    .burger {
+      &:focus {
+        box-shadow: 0 0 0 2px black, 0 0 1px 4px Highlight;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    &__container {
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    &__menu {
+      order: 2;
+      width: auto;
+      margin: 0;
+    }
+  }
+}
