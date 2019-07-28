@@ -10,7 +10,10 @@ $family-serif: 'Old Standard TT', serif;
 
 $header-logo-height: 100px;
 $header-v-padding: 10px;
+$header-total-height: ($header-logo-height + $header-v-padding * 2);
 
 $brand-color: #fbf306;
 
 $scrollbar-color: #15e659;
+
+$app-menu-header-height: 80px;
