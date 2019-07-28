@@ -11,7 +11,7 @@ export default {
 </script>
 
 <template>
-    <div id="app">
+    <div class="app" id="app">
         <div class="screens">
             <router-view/>
         </div>
