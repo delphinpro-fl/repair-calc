@@ -1,0 +1,63 @@
+//==
+//== Component: BurgerButton.vue
+//== ======================================= ==//
+
+.burger-button {
+  $this: &;
+
+  @include size(rem(64px));
+  position: relative;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
+  color: inherit;
+  border: 3px solid $brand-color;
+  border-radius: 100%;
+  background: none;
+
+  &:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 2px #fff, 0 0 1px 4px Highlight;
+  }
+
+  &__box {
+    width: 100%;
+    margin: auto;
+  }
+
+  &__line {
+    display: block;
+    width: percentage(2/5);
+    height: 3px;
+    margin: auto;
+    transition: 0.15s ease;
+    background: currentColor;
+  }
+
+  &__line_top {
+  }
+
+  &__line_btm {
+    margin-top: 10px;
+  }
+
+
+  //==
+  //== Close state
+  //== ======================================= ==//
+
+  &_close {
+    #{$this} {
+      &__line_top {
+        transform: rotate(-45deg);
+      }
+
+      &__line_btm {
+        margin-top: -3px;
+        transform: rotate(-45deg + 90deg);
+      }
+    }
+  }
+}
