@@ -1,0 +1,44 @@
+//==
+//== Component: MainMenu.vue
+//== ======================================= ==//
+
+.mainmenu {
+  @include font(13px);
+  font-family: $family-black;
+  padding: 0 20px;
+  list-style: none;
+  text-transform: uppercase;
+
+  &__item {
+    margin: rem(24px) 0;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__iconbox {
+    @include size(rem(44px));
+    display: flex;
+    flex-shrink: 0;
+    margin-right: rem(15px);
+    color: #000;
+    border-radius: 100px;
+    background: #fff;
+
+    svg {
+      @include size(50%);
+      margin: auto;
+    }
+  }
+
+  &__title {
+  }
+}
