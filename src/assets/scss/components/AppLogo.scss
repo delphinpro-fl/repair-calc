@@ -1,0 +1,22 @@
+//==
+//== Component: AppLogo.vue
+//== ======================================= ==//
+
+.app-logo {
+  @include font(12px, 0.75);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+
+  &__link {}
+
+  &__image {
+    height: rem($header-logo-height);
+    vertical-align: middle;
+  }
+
+  &__text {
+    cursor: default;
+  }
+}
