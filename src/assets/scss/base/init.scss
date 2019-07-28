@@ -1,0 +1,22 @@
+//==
+//== Init styles
+//== ======================================= ==//
+
+html {
+  @include establish-baseline();
+}
+
+body {
+  font-family: $family-default;
+  background: #000 url("/design/img/background.webp") no-repeat center top;
+  color: #fff;
+}
+
+.container {
+  @include make-container();
+  @include make-container-max-widths();
+}
+
+.row {
+  @include make-row();
+}

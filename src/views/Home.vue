@@ -1,18 +1,23 @@
-<template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
-</template>
+<script>/*!
+ * Аквариус
+ * File: views/Home.vue
+ * (c) 2019 delphinpro <delphinpro@gmail.com>
+ * licensed under the MIT license
+ */
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from '@/components/HelloWorld.vue';
+
 
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
-}
+    name      : 'home',
+    components: {
+        HelloWorld,
+    },
+};
 </script>
+
+<template>
+    <div class="home">
+        <HelloWorld msg="Welcome to Your Vue.js App"/>
+    </div>
+</template>

@@ -1,0 +1,28 @@
+//==
+//== Debug mixins
+//== ======================================= ==//
+
+@mixin outline($color: #d50000, $thickness: 2px) {
+  @if ($DEV_MODE) {
+    @if type_of($color) != color {
+      $thickness: $color;
+      $color: #d50000;
+    }
+    [data-invert=on] & {
+      outline: $thickness dotted $color;
+      outline-offset: -$thickness;
+    }
+  }
+}
+
+@mixin outline-children($color: #d50000, $thickness: 2px) {
+  &, * { @include outline($color, $thickness); }
+}
+
+@mixin debug-rhythm-grid($color: #4affff, $alpha: 0.4) {
+  @if ($DEV_MODE) {
+    .dev-mode & {
+      @include debug-vertical-alignment(rgba($color, $alpha));
+    }
+  }
+}
