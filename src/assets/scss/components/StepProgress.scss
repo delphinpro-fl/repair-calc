@@ -1,0 +1,127 @@
+//==
+//== Component: StepProgress.vue
+//== ======================================= ==//
+
+.step-progress {
+  $this: &;
+
+  @include font(12px, 0.75);
+  width: 100%;
+  cursor: default;
+  text-transform: uppercase;
+  text-shadow: none;
+  font-weight: bold;
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    height: rem(32px);
+    border: 3px solid #fff;
+    border-radius: 100px;
+
+    &:not(:last-child) {
+      margin-right: rem(20px);
+    }
+
+    //==
+    //== Item state active
+    //== ======================================= ==//
+
+    &_active {
+      border-color: $brand-color;
+
+      #{$this} {
+        &__title {
+          background-color: $brand-color;
+        }
+
+        &__index {
+          color: $brand-color;
+        }
+      }
+    }
+
+    //==
+    //== Item state complete
+    //== ======================================= ==//
+
+    &_complete {
+      border-color: #04da97;
+
+      #{$this} {
+        &__title {
+          background-color: #04da97;
+        }
+
+        &__index {
+          color: #04da97;
+
+          span {
+            display: none;
+          }
+
+          svg {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  &__index {
+    @include size(rem(32px - 3px  * 2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 2px;
+    font-size: 12px;
+    font-weight: bold;
+
+    svg {
+      @include size(70%);
+      display: none;
+      fill: currentColor;
+    }
+  }
+
+  &__title {
+    position: relative;
+    right: -2px;
+    display: flex;
+    align-items: center;
+    padding-right: rem(12px);
+    padding-left: rem(10px);
+    text-decoration: none;
+    color: #000;
+    border-radius: 0 100px 100px 0;
+    background: #fff;
+  }
+
+  @include media-breakpoint-down(sm) {
+    &__index {
+      padding-left: 0;
+    }
+    &__title {
+      display: none;
+    }
+    &__item_active &__index {
+      padding-left: 2px;
+    }
+    &__item_active &__title {
+      display: flex;
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    &__item:not(:last-child) {
+      margin-right: rem(36px);
+    }
+  }
+}
