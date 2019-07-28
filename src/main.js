@@ -7,13 +7,17 @@
 
 import './assets/scss/main.scss';
 
-import Vue    from 'vue';
+import Vue          from 'vue';
+import VueScrollbar from 'vue2-scrollbar';
+
 import App    from './App.vue';
 import router from './router';
 import store  from './store';
 
 
 Vue.config.productionTip = false;
+
+Vue.component('VueScrollbar', VueScrollbar);
 
 new Vue({
     router,

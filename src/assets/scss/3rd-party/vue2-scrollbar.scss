@@ -1,0 +1,59 @@
+//==
+//== Vendor: vue2-scrollbar
+//== ======================================= ==//
+
+.vue-scrollbar-transition {
+  transition: all 0.15s ease;
+
+  &--scrollbar {
+    transition: opacity 0.15s linear;
+  }
+}
+
+.vue-scrollbar {
+  $this: &;
+
+  &__wrapper {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  &__scrollbar-vertical,
+  &__scrollbar-horizontal {
+    @extend .vue-scrollbar-transition !optional;
+    position: absolute;
+    opacity: 0.5;
+    background: rgba($scrollbar-color, 0.1);
+
+    .scrollbar {
+      position: relative;
+      cursor: default;
+      border-radius: 100px;
+      background: rgba(0, 0, 0, 0.5);
+      background: linear-gradient(to right, lighten($scrollbar-color, 7%), darken($scrollbar-color, 7%));
+    }
+  }
+
+  &__scrollbar-vertical {
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 100%;
+
+    .scrollbar {
+      width: 10px;
+    }
+  }
+
+  &__scrollbar-horizontal {
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 10px;
+
+    .scrollbar {
+      height: 10px;
+    }
+  }
+}
