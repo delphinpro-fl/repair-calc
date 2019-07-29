@@ -1,0 +1,124 @@
+//==
+//== Component: RoomParams.vue
+//== ======================================= ==//
+
+.room-param {
+  $this: &;
+
+  display: flex;
+  align-items: baseline;
+
+  &:nth-child(n + 2) {
+    margin-top: 15px;
+  }
+
+  &__title {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+
+    @at-root {
+      label.room-param__title[for] {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__control {
+    min-width: 0;
+
+    &:not(:first-child) {
+      margin-left: 10px;
+    }
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    > * {
+      max-width: 100%;
+    }
+  }
+
+  //==
+  //== Текстовое поле ввода
+  //== ======================================= ==//
+
+  &_type_text {
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      height: 40px;
+      padding: 0;
+      transition: border-color 0.25s ease;
+      color: white;
+      border: none;
+      border-bottom: 1px solid rgba(#fff, 0.5);
+      background: none;
+      font-size: 16px;
+
+      &:focus {
+        border-bottom-color: $brand-color;
+        outline: 0;
+      }
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+
+      -moz-appearance: textfield;
+    }
+  }
+
+  //==
+  //== Числовое поле ввода
+  //== ======================================= ==//
+
+  &_type_spin {
+    #{$this}__title {
+      flex-grow: 1;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  //==
+  //== Переключатель
+  //== ======================================= ==//
+
+  &_type_checkbox {
+    align-items: center;
+
+    #{$this} {
+      &__control {
+        order: -1;
+        margin-right: 10px;
+        margin-left: 0;
+      }
+
+      &__title {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  //==
+  //== Выпадающий список
+  //== ======================================= ==//
+
+  &_type_dropdown {
+    #{$this}__control {
+      flex-grow: 1;
+      margin-top: 5px;
+    }
+  }
+}
+
+.room-param-divider {
+  width: 100%;
+  height: 1px;
+  margin: 12px 0 0;
+  border-top: 1px solid rgba(white, 0.15);
+}
