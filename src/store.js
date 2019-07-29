@@ -60,6 +60,18 @@ export default new Vuex.Store({
 
         stepIndex    : 0,
         stepDirection: null,
+
+        objects: {
+            room              : 2,
+            hall              : 1,
+            kitchen           : 1,
+            restroom          : 1,
+            bathroom          : 1,
+            combinedBathroom  : 1,
+            isCombinedBathroom: false,
+            designProject     : false,
+            apartments        : 1,
+        },
     },
 
     getters: {
@@ -81,6 +93,14 @@ export default new Vuex.Store({
         },
 
         updateHeaderDark(state, amount) { state.headerDark = amount; },
+
+        updateCountRoom(state, amount) { Vue.set(state.objects, 'room', amount); },
+        updateCountHall(state, amount) { Vue.set(state.objects, 'hall', amount); },
+        updateCountKitchen(state, amount) { Vue.set(state.objects, 'kitchen', amount); },
+        updateCountRestroom(state, amount) { Vue.set(state.objects, 'restroom', amount); },
+        updateCountBathroom(state, amount) { Vue.set(state.objects, 'bathroom', amount); },
+        updateCountCombinedBathroom(state, amount) { Vue.set(state.objects, 'combinedBathroom', amount); },
+        updateIsCombinedBathroom(state, amount) { Vue.set(state.objects, 'isCombinedBathroom', amount); },
     },
 
     actions: {},

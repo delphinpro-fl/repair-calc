@@ -5,9 +5,10 @@
  * licensed under the MIT license
  */
 
-import Vue         from 'vue';
-import Router      from 'vue-router';
-import StartScreen from '@/views/StartScreen.vue';
+import Vue             from 'vue';
+import Router          from 'vue-router';
+import StartScreen     from '@/views/StartScreen.vue';
+import SelectRooms     from '@/views/SelectRooms';
 
 
 Vue.use(Router);
@@ -20,6 +21,11 @@ export default new Router({
             path     : '/',
             name     : 'start',
             component: StartScreen,
+        },
+        {
+            path     : '/step-1-of-3',
+            name     : 'step1',
+            component: SelectRooms,
         },
     ],
 });

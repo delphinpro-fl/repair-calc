@@ -1,0 +1,83 @@
+//==
+//== Components: QuestionScreens
+//== ======================================= ==//
+
+.select-rooms {
+  height: 100%;
+  text-align: center;
+  //padding-top: rem($header-total-height);
+
+  .vue-scrollbar {
+    height: 100%;
+  }
+
+  &__container {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding-top: rem($header-total-height);
+    padding-bottom: rhythm(2);
+  }
+
+  &__title {
+    @include font(30px);
+    padding-top: rhythm(1);
+    //display: flex;
+    //align-items: flex-start;
+    font-family: $family-serif;
+    font-weight: bold;
+
+    span {
+      white-space: nowrap;
+    }
+
+    .info-icon {
+      display: flex;
+      width: 30px;
+      height: 30px;
+      margin-left: 0.5em;
+      cursor: help;
+      border: 2px solid white;
+      border-radius: 100rem;
+      background: #fff;
+
+      img {
+        display: block;
+        width: 70%;
+        height: 70%;
+        margin: auto;
+      }
+    }
+  }
+
+  &__rows-align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__rows-align2 {
+    width: 450px;
+    margin-bottom: 50px;
+    //display: flex;
+    //align-items: center;
+    //justify-content: center;
+  }
+
+  &__rows-align2 &__title {
+    text-align: left;
+  }
+
+  &__rows {
+  }
+
+  &__row {
+    margin: rem(20px) 0;
+  }
+
+  &__button {
+    margin-top: rhythm(1.5);
+  }
+}
