@@ -1,0 +1,64 @@
+//==
+//== Component: RoomListButton.vue
+//== ======================================= ==//
+
+.room-list-button {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  color: rgba(white, 0.4);
+  text-shadow: none;
+  border: none;
+  background: transparent;
+  border-radius: 100px;
+  transition: 0.3s ease;
+  transition-property: box-shadow, background-color;
+  box-shadow: 0 0 0 15px rgba(white, 0);
+
+  &:focus {
+    outline: none;
+  }
+
+  &.isActive {
+    color: white !important;
+    background: rgba(white, 0.3);
+    box-shadow: 0 0 0 15px rgba(white, 0.3);
+  }
+
+  .dot { flex-shrink: 0; }
+}
+
+.dot {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  flex-shrink: 0;
+  color: white;
+  margin-right: 17px;
+  transition: 0.3s ease;
+  background: currentColor;
+  border: 2px solid currentColor;
+
+  svg {
+    display: block;
+    margin: auto;
+    opacity: 0;
+    fill: currentColor;
+    @include size(85%);
+    color: white;
+  }
+
+  .isActive > & {
+    transform: scale(1.5);
+  }
+
+  &.isComplete {
+    //background-color: transparent;
+
+    svg { opacity: 1; }
+  }
+}
