@@ -12,6 +12,7 @@ export default {
 
     props: {
         value: Boolean,
+        id   : String,
         size : { type: String, default: 'normal', validator: checkSize },
         theme: { type: String, default: 'green' },
     },
@@ -33,6 +34,7 @@ export default {
         <input class="ios-switch__element"
             type="checkbox"
             :checked="value"
+            :id="id"
             @change="$emit('input', $event.target.checked)"
         >
         <span class="ios-switch__indicator"><span class="ios-switch__knob"></span></span>
