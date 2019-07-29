@@ -18,6 +18,10 @@ export default {
     data: () => ({
         windowHeight: window.innerHeight,
         tm          : null,
+
+        pageTitle: 'Пройдите тест за 1&nbsp;минуту и<br>\nузнайте стоимость вашего<br>\nремонта и дизайна интерьера!',
+        pageHint : 'После прохождения теста получите смету,<br>\nбез ввода телефона и личных данных',
+        giftText : 'Ответьте на три вопроса теста и получите <span class="gift">подарок</span>',
     }),
 
     mounted() {
@@ -58,19 +62,10 @@ export default {
     <div class="start-screen">
         <VueScrollbar class="vue-scrollbar" :onScroll="onScroll">
             <div class="start-screen__container container" :style="styles">
-                <div class="start-screen__title">
-                    Пройдите тест за 1&nbsp;минуту и<br>
-                    узнайте стоимость вашего<br>
-                    ремонта и дизайна интерьера!
-                </div>
-                <div class="start-screen__hint">
-                    После прохождения теста получите смету,<br>
-                    без ввода телефона и личных данных {{windowHeight}}
-                </div>
+                <div class="start-screen__title" v-html="pageTitle"></div>
+                <div class="start-screen__hint" v-html="pageHint"></div>
                 <div class="start-screen__text">
-                    <div class="gift-text">
-                        Ответьте на три вопроса теста и получите <span class="gift">подарок</span>
-                    </div>
+                    <div class="gift-text" v-html="giftText"></div>
                 </div>
                 <div class="start-screen__button" @click="nextScreen">
                     <ScrollButton aria-label="Начать тест"></ScrollButton>
