@@ -1,0 +1,19 @@
+//==
+//== Component: RoomList.vue
+//== ======================================= ==//
+
+.room-list {
+  &__item {
+    margin: 40px 0;
+    padding: 0 15px;
+    cursor: pointer;
+
+    &:last-child { margin-bottom: 0; }
+
+    &:hover {
+      .room-list-button {
+        color: rgba(white, 0.7);
+      }
+    }
+  }
+}
