@@ -13,20 +13,20 @@ import StepProgress from '@/components/StepProgress';
 export default {
     name: 'AppHeader',
 
+    props: {
+        dark: Boolean,
+    },
+
     components: {
         AppLogo,
         BurgerButton,
         StepProgress,
     },
-
-    data: () => ({
-        screenScrolled: false,
-    }),
 };
 </script>
 
 <template>
-    <div class="header" :class="{dark: screenScrolled}">
+    <div class="header" :class="{header_dark: dark}">
         <div class="header__container container">
             <div class="header__logo">
                 <AppLogo :text="$store.state.logoText"></AppLogo>

@@ -47,6 +47,8 @@ export default new Vuex.Store({
         privacyPolicy: '#',
         termOfUse    : '#',
 
+        headerDark: false,
+
         steps: [
             { title: 'Введение' },
             { title: 'Вопрос 1' },

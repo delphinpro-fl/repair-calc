@@ -13,8 +13,9 @@
   color: #fff;
   text-shadow: -1px 0 1px rgba(#000, 1);
 
-  &.dark {
-    background-color: rgba(#000, 0.7);
+  &_dark {
+    background-color: rgba(#000, 0.8);
+    border-bottom: 1px solid rgba($brand-color, 0.3);
   }
 
   &__container {

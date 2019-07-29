@@ -16,12 +16,18 @@ export default {
         AppHeader,
         AppMenu,
     },
+
+    computed: {
+        darkHeader() {
+            return this.$store.state.headerDark;
+        },
+    },
 };
 </script>
 
 <template>
     <div class="app" id="app">
-        <AppHeader></AppHeader>
+        <AppHeader :dark="darkHeader"></AppHeader>
         <router-view/>
         <AppMenu></AppMenu>
     </div>
