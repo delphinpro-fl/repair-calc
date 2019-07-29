@@ -12,7 +12,7 @@
     "vrhythm": "^2.0.3",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
-    "vue2-scrollbar": "0.0.3",
+    "vue2-scrollbar": "git+https://github.com/delphinpro/vue2-scrollbar.git",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
