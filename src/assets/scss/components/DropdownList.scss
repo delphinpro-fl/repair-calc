@@ -1,0 +1,155 @@
+//==
+//== Component: DropdownList.vue
+//== ======================================= ==//
+
+$x-select-height: 30px;
+$x-select-active-color: $brand-color;
+
+.x-select {
+  position: relative;
+  width: 100%;
+  display: block;
+  text-shadow: none;
+
+  %no-select {
+    -webkit-backface-visibility: hidden;
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+
+  &__placeholder {
+    width: 100%;
+    display: block;
+    position: relative;
+    cursor: pointer;
+  }
+
+
+  &__heading {
+    @extend %no-select;
+    width: 100%;
+    height: $x-select-height;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    color: #999;
+    background: #fff;
+    position: relative;
+
+    span {
+      min-width:0;
+      width: calc(100% - #{$x-select-height});
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    i {
+      width: $x-select-height;
+      height: $x-select-height * 0.7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px solid #ddd;
+      font-size: 12px;
+
+      &:after {
+        content: '\25BC';
+
+        .isOpen & { content: '\25B2'; }
+      }
+    }
+  }
+
+  //==
+  //== Dropdown
+  //== ======================================= ==//
+
+  &__dropdown {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    position: relative;
+  }
+
+  &__item {
+    display: block;
+  }
+
+  &__title {
+    @extend %no-select;
+    width: 100%;
+    background: #fff;
+    height: $x-select-height;
+    line-height: $x-select-height;
+    overflow: hidden;
+    padding: 0 20px;
+    display: block;
+    color: #bcbcbc;
+    cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+
+///////////////////
+//==
+//== Style 4
+//== ======================================= ==//
+
+$x-select-4-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+
+.x-select {
+  perspective: 800px;
+
+  &__heading {
+    transform-style: preserve-3d;
+    transform-origin: 50% 0;
+    transition: transform .3s;
+    box-shadow: $x-select-4-box-shadow;
+  }
+
+  &__placeholder:active &__heading {
+    transform: rotateX(60deg);
+  }
+
+  &.isOpen &__heading {
+    box-shadow: $x-select-4-box-shadow;
+    color: black;
+  }
+
+  //==
+  //== Dropdown
+  //== ======================================= ==//
+
+  &__dropdown {
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &__item {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    pointer-events: none;
+  }
+
+  &__title {
+    box-shadow: $x-select-4-box-shadow;
+  }
+
+  &.isOpen &__title {
+    pointer-events: all;
+    box-shadow: $x-select-4-box-shadow;
+    transition: all 0.2s linear 0s;
+
+    &:hover {
+      background: $x-select-active-color;
+      color: black;
+    }
+  }
+}
