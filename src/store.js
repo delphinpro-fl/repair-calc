@@ -56,7 +56,8 @@ export default new Vuex.Store({
             { title: 'Вопрос 3' },
         ],
 
-        stepIndex: 0,
+        stepIndex    : 0,
+        stepDirection: null,
     },
 
     getters: {
@@ -71,14 +72,14 @@ export default new Vuex.Store({
             state.isOpenMainMenu = !state.isOpenMainMenu;
         },
 
-        swithScreen(state) {
-            state.stepIndex += 1;
+        switchScreen(state, newIndex) {
+            if (newIndex === state.stepIndex) return;
+            state.stepDirection = newIndex > state.stepIndex ? 'up' : 'down';
+            state.stepIndex = newIndex;
         },
+
+        updateHeaderDark(state, amount) { state.headerDark = amount; },
     },
 
-    actions: {
-        nextScreen({ commit }) {
-            commit('swithScreen');
-        },
-    },
+    actions: {},
 });

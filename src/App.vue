@@ -22,13 +22,35 @@ export default {
             return this.$store.state.headerDark;
         },
     },
+
+    methods: {
+        screenBefore(el) {
+            console.log('screenBefore', this.$store.state.stepDirection, el);
+            el.classList.add(this.$store.state.stepDirection);
+        },
+        screenAfter(el) {
+            console.log('screenAfter',this.$store.state.stepDirection,  el);
+            el.classList.remove(this.$store.state.stepDirection);
+        },
+    },
 };
 </script>
 
 <template>
-    <div class="app" id="app">
+    <div
+        class="app"
+        id="app"
+        :class="{app_dark: $store.state.stepIndex> 0}"
+    >
         <AppHeader :dark="darkHeader"></AppHeader>
-        <router-view/>
+        <transition
+            @before-enter="screenBefore"
+            @before-leave="screenBefore"
+            @after-enter="screenAfter"
+            @after-leave="screenAfter"
+        >
+            <router-view class="app__screen"/>
+        </transition>
         <AppMenu></AppMenu>
     </div>
 </template>

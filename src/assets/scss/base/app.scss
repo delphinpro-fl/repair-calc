@@ -8,4 +8,57 @@
   width: 100%;
   height: 100%;
   background-color: rgba(black, 0.4);
+
+  &__screen {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    &.v-enter-active,
+    &.v-leave-active {
+      transition: transform 1s ease;
+    }
+
+    &.up {
+      &.v-enter-active {
+        transform: translateY(100%);
+      }
+
+      &.v-enter-to {
+        transform: translateY(0);
+      }
+
+      &.v-leave-active {
+        transform: translateY(0);
+      }
+
+      &.v-leave-to {
+        transform: translateY(-100%);
+      }
+    }
+
+    &.down {
+      &.v-enter-active {
+        transform: translateY(-100%);
+      }
+
+      &.v-enter-to {
+        transform: translateY(0);
+      }
+
+      &.v-leave-active {
+        transform: translateY(0);
+      }
+
+      &.v-leave-to {
+        transform: translateY(100%);
+      }
+    }
+  }
+
+  &_dark {
+    background-color: rgba(black, 0.8);
+  }
 }

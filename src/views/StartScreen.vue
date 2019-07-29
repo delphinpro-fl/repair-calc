@@ -5,8 +5,7 @@
  * licensed under the MIT license
  */
 
-import ScrollButton   from '@/components/ScrollButton';
-import { mapActions } from 'vuex';
+import ScrollButton from '@/components/ScrollButton';
 
 
 export default {
@@ -22,10 +21,11 @@ export default {
     }),
 
     mounted() {
-        window.addEventListener('resize', e => {
-            clearTimeout(this.tm);
-            this.tm = setTimeout(() => this.windowHeight = window.innerHeight, 300);
-        });
+        window.addEventListener('resize', this.onResize.bind(this));
+    },
+
+    beforeDestroy() {
+        window.removeEventListener('resize', this.onResize);
     },
 
     computed: {
@@ -37,16 +37,26 @@ export default {
     },
 
     methods: {
-        ...mapActions([
-            'nextScreen',
-        ]),
+        onResize() {
+            clearTimeout(this.tm);
+            this.tm = setTimeout(() => this.windowHeight = window.innerHeight, 300);
+        },
+
+        onScroll(data) {
+            this.$store.commit('updateHeaderDark', data.top !== 0);
+        },
+
+        nextScreen() {
+            this.$store.commit('switchScreen', 1);
+            this.$router.push({ name: 'step1' });
+        },
     },
 };
 </script>
 
 <template>
     <div class="start-screen">
-        <VueScrollbar class="vue-scrollbar">
+        <VueScrollbar class="vue-scrollbar" :onScroll="onScroll">
             <div class="start-screen__container container" :style="styles">
                 <div class="start-screen__title">
                     Пройдите тест за 1&nbsp;минуту и<br>
@@ -62,7 +72,7 @@ export default {
                         Ответьте на три вопроса теста и получите <span class="gift">подарок</span>
                     </div>
                 </div>
-                <div class="start-screen__button" v-if="true || !hasError" @click="nextScreen()">
+                <div class="start-screen__button" @click="nextScreen">
                     <ScrollButton aria-label="Начать тест"></ScrollButton>
                 </div>
             </div>
