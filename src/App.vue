@@ -25,11 +25,9 @@ export default {
 
     methods: {
         screenBefore(el) {
-            console.log('screenBefore', this.$store.state.stepDirection, el);
             el.classList.add(this.$store.state.stepDirection);
         },
         screenAfter(el) {
-            console.log('screenAfter',this.$store.state.stepDirection,  el);
             el.classList.remove(this.$store.state.stepDirection);
         },
     },
