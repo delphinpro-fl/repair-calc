@@ -47,7 +47,9 @@ export default {
         },
 
         onScroll(data) {
-            this.$store.commit('updateHeaderDark', data.top !== 0);
+            if (this.$store.state.headerDark !== (data.top !== 0)) {
+                this.$store.commit('updateHeaderDark', data.top !== 0);
+            }
         },
 
         nextScreen() {
