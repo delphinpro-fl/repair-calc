@@ -1,0 +1,113 @@
+//==
+//== Component: AdditionalOptions.vue
+//== ======================================= ==//
+
+.additional-options {
+  height: 100%;
+
+  .vue-scrollbar {
+    height: 100%;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding-top: rem($header-total-height);
+    padding-bottom: rhythm(2);
+  }
+
+  &__title {
+    @include font(30px);
+    display: flex;
+    align-items: flex-start;
+    padding-top: rhythm(1);
+    font-family: $family-serif;
+    font-weight: bold;
+
+    span {
+      white-space: nowrap;
+    }
+  }
+
+  &__rows-align {
+    margin-bottom: 50px;
+  }
+
+  &__rows-align2 &__title {
+    text-align: left;
+  }
+
+  &__rows {
+  }
+
+  &__row {
+    margin: rem(20px) 0;
+  }
+
+  &__button {
+    margin-top: rhythm(1.5);
+  }
+}
+
+.info-icon {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  margin-left: 0.5em;
+  cursor: help;
+  color: #000;
+  border: 2px solid white;
+  border-radius: 100rem;
+  background: #fff;
+
+  svg {
+    display: block;
+    width: 70%;
+    height: 70%;
+    margin: auto;
+  }
+}
+
+.radio2 {
+  display: flex;
+  cursor: pointer;
+  margin-right: 10px;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    left: -9999px;
+  }
+
+  span {
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(white, .4);
+    border-radius: 999px;
+    background-color: rgba(white, 0.4);
+    transition-duration: .4s;
+    transition-property: background-color, box-shadow;
+    box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.4);
+
+    &::before {
+      content: '';
+      width: 18px;
+      height: 18px;
+      display: block;
+      border-radius: 100px;
+    }
+  }
+
+  $color: #3b89ec;
+  $color: #20db95;
+  input:checked + span {
+    background-position: 0 0;
+    background-color: $color;
+    border: 1px solid darken($color, 5%);
+    box-shadow: inset 0 0 0 10px $color;
+  }
+}

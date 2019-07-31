@@ -73,6 +73,10 @@ export default new Vuex.Store({
             apartments        : 1,
         },
 
+        roomList     : [],
+        designProject: true,
+        apartments   : 1,
+
         types: {
             room: {
                 title : 'Комната',
@@ -643,7 +647,7 @@ export default new Vuex.Store({
         switchScreen(state, newIndex) {
             if (newIndex === state.stepIndex) return;
             state.stepDirection = newIndex > state.stepIndex ? 'up' : 'down';
-            state.stepIndex = newIndex;
+            state.stepIndex     = newIndex;
         },
 
         updateHeaderDark(state, amount) { state.headerDark = amount; },
@@ -655,6 +659,9 @@ export default new Vuex.Store({
         updateCountBathroom(state, amount) { Vue.set(state.objects, 'bathroom', amount); },
         updateCountCombinedBathroom(state, amount) { Vue.set(state.objects, 'combinedBathroom', amount); },
         updateIsCombinedBathroom(state, amount) { Vue.set(state.objects, 'isCombinedBathroom', amount); },
+
+        updateDesignProject(state, amount) { state.designProject = amount; },
+        updateApartments(state, amount) { state.apartments = amount; },
     },
 
     actions: {},
