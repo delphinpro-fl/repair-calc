@@ -196,6 +196,7 @@ export default {
         },
 
         nextScreen() {
+            this.$store.commit('updateRoomList', this.roomList);
             this.$router.push({ name: 'step3' });
         },
     },

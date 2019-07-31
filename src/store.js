@@ -662,6 +662,8 @@ export default new Vuex.Store({
 
         updateDesignProject(state, amount) { state.designProject = amount; },
         updateApartments(state, amount) { state.apartments = amount; },
+
+        updateRoomList(state, amount) { state.roomList = amount; },
     },
 
     actions: {},
