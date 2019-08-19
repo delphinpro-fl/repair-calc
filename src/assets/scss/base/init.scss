@@ -10,11 +10,11 @@ html {
 }
 
 body {
-  font-family: $family-default;
   width: 100%;
   height: 100%;
   color: #fff;
   background: #000 url("/design/img/background.webp") no-repeat center top;
+  font-family: $family-default;
 }
 
 .container {
@@ -25,3 +25,5 @@ body {
 .row {
   @include make-row();
 }
+
+@include make-grid-columns();
