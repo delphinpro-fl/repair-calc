@@ -633,6 +633,7 @@ export default new Vuex.Store({
     },
 
     getters: {
+        roomList: state => [...state.roomList],
         telephoneAsLink(state) {
             let plus = state.telephone.length && state.telephone[0] === '+' ? '+' : '';
             return `tel:${plus}${state.telephone.replace(/\D/g, '')}`;
