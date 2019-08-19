@@ -10,7 +10,7 @@ import RoomParams            from '@/components/RoomParams';
 import ScrollButton          from '@/components/ScrollButton';
 import NextRoomButton        from '@/components/NextRoomButton';
 import { colors }            from '@/library/colors';
-import { checkCompleteRoom } from '@/library/checkCompleteRoom';
+import { checkCompleteRoom } from '@/library/functions';
 
 
 export default {
