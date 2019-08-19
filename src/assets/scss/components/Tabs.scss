@@ -1,0 +1,45 @@
+//==
+//== Component: Tabs.vue
+//== ======================================= ==//
+
+.tabs {
+  @include font(14px);
+  text-align: center;
+  font-family: $family-default;
+  width: 100%;
+  display: flex;
+  //justify-content: center;
+  align-items: center;
+
+  &__tab {
+    margin: 0 20px;
+  }
+}
+
+.tab {
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  color: #999;
+  transition: 0.3s ease;
+  padding-bottom: 3px;
+  user-select: none;
+  font-size: 0.8em;
+  white-space: nowrap;
+
+  &:hover {
+    color: #fff;
+  }
+
+  //&:nth-child(2),
+  &_active {
+    color: #fff;
+    border-bottom-color: $brand-color;
+  }
+
+  &__title {
+    display: block;
+    @include font(14px);
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
