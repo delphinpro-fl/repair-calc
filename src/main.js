@@ -17,6 +17,10 @@ import store  from './store';
 
 Vue.config.productionTip = false;
 
+Number.prototype.fmt = function (decimal = 0) {
+    return this.toFixed(decimal).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+};
+
 Vue.component('VueScrollbar', VueScrollbar);
 
 new Vue({
