@@ -7,57 +7,59 @@ $x-select-active-color: $brand-color;
 
 .x-select {
   position: relative;
-  width: 100%;
   display: block;
+  width: 100%;
   text-shadow: none;
 
   %no-select {
+    user-select: none;
     -webkit-backface-visibility: hidden;
     -webkit-touch-callout: none;
-    user-select: none;
   }
 
   &__placeholder {
-    width: 100%;
-    display: block;
     position: relative;
+    display: block;
+    width: 100%;
     cursor: pointer;
   }
 
 
   &__heading {
     @extend %no-select;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     height: $x-select-height;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding-left: 20px;
     color: #999;
     background: #fff;
-    position: relative;
 
     span {
-      min-width:0;
-      width: calc(100% - #{$x-select-height});
       overflow: hidden;
+      width: calc(100% - #{$x-select-height});
+      min-width: 0;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
 
     i {
-      width: $x-select-height;
-      height: $x-select-height * 0.7;
       display: flex;
       align-items: center;
       justify-content: center;
+      width: $x-select-height;
+      height: $x-select-height * 0.7;
       border-left: 1px solid #ddd;
       font-size: 12px;
 
       &:after {
         content: '\25BC';
 
-        .isOpen & { content: '\25B2'; }
+        .isOpen & {
+          content: '\25B2';
+        }
       }
     }
   }
@@ -67,11 +69,11 @@ $x-select-active-color: $brand-color;
   //== ======================================= ==//
 
   &__dropdown {
-    list-style-type: none;
+    position: relative;
+    display: block;
     margin: 0;
     padding: 0;
-    display: block;
-    position: relative;
+    list-style-type: none;
   }
 
   &__item {
@@ -80,17 +82,17 @@ $x-select-active-color: $brand-color;
 
   &__title {
     @extend %no-select;
-    width: 100%;
-    background: #fff;
-    height: $x-select-height;
-    line-height: $x-select-height;
-    overflow: hidden;
-    padding: 0 20px;
     display: block;
-    color: #bcbcbc;
+    overflow: hidden;
+    width: 100%;
+    height: $x-select-height;
+    padding: 0 20px;
     cursor: pointer;
     white-space: nowrap;
     text-overflow: ellipsis;
+    color: #bcbcbc;
+    background: #fff;
+    line-height: $x-select-height;
   }
 }
 
@@ -106,10 +108,10 @@ $x-select-4-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   perspective: 800px;
 
   &__heading {
-    transform-style: preserve-3d;
-    transform-origin: 50% 0;
     transition: transform .3s;
+    transform-origin: 50% 0;
     box-shadow: $x-select-4-box-shadow;
+    transform-style: preserve-3d;
   }
 
   &__placeholder:active &__heading {
@@ -117,8 +119,8 @@ $x-select-4-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   }
 
   &.isOpen &__heading {
-    box-shadow: $x-select-4-box-shadow;
     color: black;
+    box-shadow: $x-select-4-box-shadow;
   }
 
   //==
@@ -133,8 +135,8 @@ $x-select-4-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 
   &__item {
     position: absolute;
-    width: 100%;
     left: 0;
+    width: 100%;
     pointer-events: none;
   }
 
@@ -143,13 +145,14 @@ $x-select-4-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   }
 
   &.isOpen &__title {
+    transition: all 0.2s linear 0s;
     pointer-events: all;
     box-shadow: $x-select-4-box-shadow;
-    transition: all 0.2s linear 0s;
+  }
 
-    &:hover {
-      background: $x-select-active-color;
-      color: black;
-    }
+  &.isOpen .isCurrent &__title,
+  &.isOpen &__title:hover {
+    color: black;
+    background: $x-select-active-color;
   }
 }

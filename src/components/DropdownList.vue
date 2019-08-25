@@ -5,31 +5,34 @@
  * licensed under the MIT license
  */
 
+import { EVENT_CLICK_OUTSIDE } from '@/library/constants';
+
+
 export default {
-    name: 'DropdownList',
+    name : 'DropdownList',
     props: {
         params: Object,
-        param: Object,
+        param : Object,
 
-        gutter: { type: Number, default: 0 },
-        speed: { type: Number, default: 300 },
-        offsetY: { type: Number, default: 2 },
-        offsetX: { type: Number, default: 2 },
+        gutter  : { type: Number, default: 0 },
+        speed   : { type: Number, default: 300 },
+        offsetY : { type: Number, default: 2 },
+        offsetX : { type: Number, default: 2 },
         maxDepth: { type: Number, default: 3 },
-        easing: { type: String, default: 'ease' },
+        easing  : { type: String, default: 'ease' },
     },
 
     data: () => ({
-        ready: false,
+        ready     : false,
         baseZIndex: 1000,
-        isActive: false, // приоткрыта плашка
-        isOpen: false, // открыт список
+        isActive  : false, // приоткрыта плашка
+        isOpen    : false, // открыт список
     }),
 
     computed: {
         size() {
             return {
-                width: this.$el.clientWidth,
+                width : this.$el.clientWidth,
                 height: this.$el.clientHeight,
             };
         },
@@ -42,15 +45,31 @@ export default {
 
         selectedText() {
             let val = this.params[this.param.name];
-            return val === -1 ? 'Не выбрано' : this.param.options[val].title;
+            if (val === -1) return 'Не выбрано';
+            let selectedOption = this.param.options.find(item => item.value === val);
+            if (selectedOption) {
+                return selectedOption.title;
+            }
+            return `Error (${val})`;
         },
     },
 
     mounted() {
         this.$nextTick(() => this.ready = true);
+        this.$bus.$on(EVENT_CLICK_OUTSIDE, this.onClickOutside);
+    },
+
+    beforeDestroy() {
+        this.$bus.$off(EVENT_CLICK_OUTSIDE, this.onClickOutside);
     },
 
     methods: {
+        onClickOutside(e) {
+            if (e !== this._uid) {
+                this.closeDropdown();
+            }
+        },
+
         isSelected(index) {
             let val = this.params[this.param.name];
             return val === index;
@@ -68,19 +87,20 @@ export default {
                 : (this.size.width - this.offsetX * (idx + 1) * 2);
 
             return {
-                zIndex: (this.baseZIndex) + (this.param.options.length - index),
-                top: top + 'px',
+                zIndex    : (this.baseZIndex) + (this.param.options.length - index),
+                top       : top + 'px',
                 marginLeft: this.isOpen ? 0 : (this.offsetX * (idx + 1)) + 'px',
-                width: width + 'px',
+                width     : width + 'px',
                 transition: `all ${this.speed}ms ${this.easing}`,
             };
         },
 
         openDropdown() {
             this.isOpen = true;
+            let h       = (this.param.options.length + 1) * (this.size.height + this.gutter);
 
-            let h = (this.param.options.length + 1) * (this.size.height + this.gutter);
             this.$refs.list.style.height = h + 'px';
+            this.$bus.$emit(EVENT_CLICK_OUTSIDE, this._uid);
         },
 
         closeDropdown() {
@@ -114,21 +134,21 @@ export default {
         <span
             class="x-select__placeholder"
             :style="placeholderStyles"
-            @click="toggleDropdown"
+            @click.stop="toggleDropdown"
         ><span class="x-select__heading"><span v-text="selectedText"></span><i></i></span></span>
 
         <ul
-            v-if="ready"
             class="x-select__dropdown"
+            v-if="ready"
             ref="list"
         >
             <li
-                v-for="(opt, index) in param.options"
                 class="x-select__item"
-                :class="{isCurrent:isSelected(index)}"
-                :data-value="index"
+                v-for="(opt, index) in param.options"
+                :class="{isCurrent:isSelected(opt.value)}"
+                :data-value="opt.value"
                 :style="optionStyles(index)"
-                @click="pickOption(index, opt.title)"
+                @click="pickOption(opt.value, opt.title)"
             ><span class="x-select__title" v-text="opt.title"></span></li>
         </ul>
     </div>
