@@ -5,8 +5,9 @@
  * licensed under the MIT license
  */
 
-import AppHeader from '@/components/App/AppHeader';
-import AppMenu   from '@/components/App/AppMenu';
+import AppHeader               from '@/components/App/AppHeader';
+import AppMenu                 from '@/components/App/AppMenu';
+import { EVENT_CLICK_OUTSIDE } from '@/library/constants';
 
 
 export default {
@@ -21,6 +22,12 @@ export default {
         darkHeader() {
             return this.$store.state.headerDark;
         },
+    },
+
+    mounted() {
+        this.$el.addEventListener('click', e=>{
+            this.$bus.$emit(EVENT_CLICK_OUTSIDE, -1);
+        });
     },
 
     methods: {
