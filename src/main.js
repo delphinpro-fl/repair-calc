@@ -23,9 +23,18 @@ Number.prototype.fmt = function (decimal = 0) {
 
 Vue.component('VueScrollbar', VueScrollbar);
 
+Object.defineProperty(Vue.prototype,"$bus",{
+    get: function() {
+        return this.$root.bus;
+    }
+});
+
 new Vue({
     router,
     store,
+    data: {
+        bus: new Vue({}) // Here we bind our event bus to our $root Vue model.
+    },
     render : h => h(App),
     mounted: () => document.dispatchEvent(new Event('x-app-rendered')),
 }).$mount('#app');
