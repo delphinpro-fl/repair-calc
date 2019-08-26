@@ -1,0 +1,22 @@
+//==
+//== Component AppToast.vue
+//== ======================================= ==//
+
+.toast {
+  @include font(14px);
+  position: fixed;
+  z-index: 9999;
+  bottom: 5px;
+  left: 5px;
+  padding: 0.75em 1.5em;
+  transform: translateX(-110%);
+  color: #fff;
+  border-radius: 5px;
+  background: rgba(#000, 0.8);
+  transition: 0.3s ease;
+  cursor: pointer;
+
+  &.show {
+    transform: translateX(0);
+  }
+}
