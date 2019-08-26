@@ -13,6 +13,9 @@ import { colors }            from '@/library/colors';
 import { checkCompleteRoom } from '@/library/functions';
 
 
+const wallsHeight = 3;
+function wallsArea(area) { return 4.75 * wallsHeight * Math.sqrt(area); }
+
 export default {
     name: 'PreviewBuild',
 
@@ -140,7 +143,8 @@ export default {
                     type,
                     title,
                     color,
-                    complete: false,
+                    complete : false,
+                    wallsArea: wallsArea(params.area),
                     params,
                 };
 
