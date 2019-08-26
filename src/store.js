@@ -8,6 +8,21 @@
 import Vue  from 'vue';
 import Vuex from 'vuex';
 
+import {
+    CEILING_DRYWALL,
+    CEILING_PAINTING,
+    CEILING_STRETCH_1L,
+    CEILING_STRETCH_2L,
+    FLOOR_LAMINATE,
+    FLOOR_MASSIVE_BOARD,
+    FLOOR_PARQUET,
+    FLOOR_TILE,
+    WALLS_PAINTING,
+    WALLS_PLASTER,
+    WALLS_TILE,
+    WALLS_WALLPAPER,
+} from '@/library/constants';
+
 
 Vue.use(Vuex);
 
@@ -93,10 +108,10 @@ export default new Vuex.Store({
                         name        : 'floor',
                         defaultValue: 0,
                         options     : [
-                            { title: 'Плитка' },
-                            { title: 'Ламинат' },
-                            { title: 'Паркетная доска на подложку' },
-                            { title: 'Массивная доска/Инженерная доска на клей' },
+                            { title: 'Плитка', value: FLOOR_TILE },
+                            { title: 'Ламинат', value: FLOOR_LAMINATE },
+                            { title: 'Паркетная доска на подложку', value: FLOOR_PARQUET },
+                            { title: 'Массивная доска/Инженерная доска на клей', value: FLOOR_MASSIVE_BOARD },
                         ],
                     },
                     {
@@ -117,15 +132,9 @@ export default new Vuex.Store({
                         name        : 'wall',
                         defaultValue: 0,
                         options     : [
-                            { title: 'Обои', title2: 'Поклейка обоев' },
-                            {
-                                title : 'Покраска',
-                                title2: 'Окрашивание стен водоэмульсионной краской в два слоя (оклеивание стеклохолстом, шпаклевание Шитрок в два слоя)',
-                            },
-                            {
-                                title : 'Декоративная штукатурка',
-                                title2: 'Декоративная штукатурка (оклеивание стеклохолстом, шпаклевание Шитрок в два слоя)',
-                            },
+                            { title: 'Обои', value: WALLS_WALLPAPER },
+                            { title: 'Покраска', value: WALLS_PAINTING },
+                            { title: 'Декоративная штукатурка', value: WALLS_PLASTER },
                         ],
                     },
                     {
@@ -146,9 +155,9 @@ export default new Vuex.Store({
                         name        : 'ceiling',
                         defaultValue: 0,
                         options     : [
-                            { title: 'Гипсокартон в один уровень' },
-                            { title: 'Натяжной в один уровень' },
-                            { title: 'Натяжной многоуровневый' },
+                            { title: 'Гипсокартон в один уровень', value: CEILING_DRYWALL },
+                            { title: 'Натяжной в один уровень', value: CEILING_STRETCH_1L },
+                            { title: 'Натяжной многоуровневый', value: CEILING_STRETCH_2L },
                         ],
                     },
                     {
@@ -188,10 +197,10 @@ export default new Vuex.Store({
                         name        : 'floor',
                         defaultValue: 0,
                         options     : [
-                            { title: 'Плитка' },
-                            { title: 'Ламинат' },
-                            { title: 'Паркетная доска на подложку' },
-                            { title: 'Массивная доска/Инженерная доска на клей' },
+                            { title: 'Плитка', value: FLOOR_TILE },
+                            { title: 'Ламинат', value: FLOOR_LAMINATE },
+                            { title: 'Паркетная доска на подложку', value: FLOOR_PARQUET },
+                            { title: 'Массивная доска/Инженерная доска на клей', value: FLOOR_MASSIVE_BOARD },
                         ],
                     },
                     {
@@ -212,9 +221,9 @@ export default new Vuex.Store({
                         name        : 'wall',
                         defaultValue: 0,
                         options     : [
-                            { title: 'Обои' },
-                            { title: 'Покраска' },
-                            { title: 'Декоративная штукатурка' },
+                            { title: 'Обои', value: WALLS_WALLPAPER },
+                            { title: 'Покраска', value: WALLS_PAINTING },
+                            { title: 'Декоративная штукатурка', value: WALLS_PLASTER },
                         ],
                     },
                     {
@@ -229,9 +238,9 @@ export default new Vuex.Store({
                         name        : 'ceiling',
                         defaultValue: 0,
                         options     : [
-                            { title: 'Покраска' },
-                            { title: 'Натяжной в один уровень' },
-                            { title: 'Натяжной многоуровневый' },
+                            { title: 'Покраска', value: CEILING_PAINTING },
+                            { title: 'Натяжной в один уровень', value: CEILING_STRETCH_1L },
+                            { title: 'Натяжной многоуровневый', value: CEILING_STRETCH_2L },
                         ],
                     },
                     {
@@ -258,10 +267,10 @@ export default new Vuex.Store({
                         name        : 'floor',
                         defaultValue: 0,
                         options     : [
-                            { title: 'Плитка' },
-                            { title: 'Ламинат' },
-                            { title: 'Паркетная доска на подложку' },
-                            { title: 'Массивная доска/Инженерная доска на клей' },
+                            { title: 'Плитка', value: FLOOR_TILE },
+                            { title: 'Ламинат', value: FLOOR_LAMINATE },
+                            { title: 'Паркетная доска на подложку', value: FLOOR_PARQUET },
+                            { title: 'Массивная доска/Инженерная доска на клей', value: FLOOR_MASSIVE_BOARD },
                         ],
                     },
                     {
@@ -282,9 +291,9 @@ export default new Vuex.Store({
                         name        : 'wall',
                         defaultValue: 0,
                         options     : [
-                            { title: 'Обои' },
-                            { title: 'Покраска' },
-                            { title: 'Декоративная штукатурка' },
+                            { title: 'Обои', value: WALLS_WALLPAPER },
+                            { title: 'Покраска', value: WALLS_PAINTING },
+                            { title: 'Декоративная штукатурка', value: WALLS_PLASTER },
                         ],
                     },
                     {
@@ -299,9 +308,9 @@ export default new Vuex.Store({
                         name        : 'ceiling',
                         defaultValue: 0,
                         options     : [
-                            { title: 'Покраска' },
-                            { title: 'Натяжной в один уровень' },
-                            { title: 'Натяжной многоуровневый' },
+                            { title: 'Покраска', value: CEILING_PAINTING },
+                            { title: 'Натяжной в один уровень', value: CEILING_STRETCH_1L },
+                            { title: 'Натяжной многоуровневый', value: CEILING_STRETCH_2L },
                         ],
                     },
                     {
@@ -335,7 +344,7 @@ export default new Vuex.Store({
                         name        : 'floor',
                         defaultValue: 0,
                         options     : [
-                            { title: 'Плитка' },
+                            { title: 'Плитка', value: FLOOR_TILE },
                         ],
                     },
                     {
@@ -356,8 +365,8 @@ export default new Vuex.Store({
                         name        : 'wall',
                         defaultValue: 0,
                         options     : [
-                            { title: 'Плитка' },
-                            { title: 'Покраска' },
+                            { title: 'Плитка', value: WALLS_TILE },
+                            { title: 'Покраска', value: WALLS_PAINTING },
                         ],
                     },
                     {
@@ -372,8 +381,8 @@ export default new Vuex.Store({
                         name        : 'ceiling',
                         defaultValue: 0,
                         options     : [
-                            { title: 'Натяжной в один уровень' },
-                            { title: 'Натяжной многоуровневый' },
+                            { title: 'Натяжной в один уровень', value: CEILING_STRETCH_1L },
+                            { title: 'Натяжной многоуровневый', value: CEILING_STRETCH_2L },
                         ],
                     },
                     {
@@ -413,7 +422,7 @@ export default new Vuex.Store({
                         name        : 'floor',
                         defaultValue: 0,
                         options     : [
-                            { title: 'Плитка' },
+                            { title: 'Плитка', value: FLOOR_TILE },
                         ],
                     },
                     {
@@ -434,8 +443,8 @@ export default new Vuex.Store({
                         name        : 'wall',
                         defaultValue: 0,
                         options     : [
-                            { title: 'Плитка' },
-                            { title: 'Покраска' },
+                            { title: 'Плитка', value: WALLS_TILE },
+                            { title: 'Покраска', value: WALLS_PAINTING },
                         ],
                     },
                     {
@@ -450,8 +459,8 @@ export default new Vuex.Store({
                         name        : 'ceiling',
                         defaultValue: 0,
                         options     : [
-                            { title: 'Натяжной в один уровень' },
-                            { title: 'Натяжной многоуровневый' },
+                            { title: 'Натяжной в один уровень', value: CEILING_STRETCH_1L },
+                            { title: 'Натяжной многоуровневый', value: CEILING_STRETCH_2L },
                         ],
                     },
                     {
@@ -503,7 +512,7 @@ export default new Vuex.Store({
                         name        : 'floor',
                         defaultValue: 0,
                         options     : [
-                            { title: 'Плитка' },
+                            { title: 'Плитка', value: FLOOR_TILE },
                         ],
                     },
                     {
@@ -524,8 +533,8 @@ export default new Vuex.Store({
                         name        : 'wall',
                         defaultValue: 0,
                         options     : [
-                            { title: 'Плитка' },
-                            { title: 'Покраска' },
+                            { title: 'Плитка', value: WALLS_TILE },
+                            { title: 'Покраска', value: WALLS_PAINTING },
                         ],
                     },
                     {
@@ -540,8 +549,8 @@ export default new Vuex.Store({
                         name        : 'ceiling',
                         defaultValue: 0,
                         options     : [
-                            { title: 'Натяжной в один уровень' },
-                            { title: 'Натяжной многоуровневый' },
+                            { title: 'Натяжной в один уровень', value: CEILING_STRETCH_1L },
+                            { title: 'Натяжной многоуровневый', value: CEILING_STRETCH_2L },
                         ],
                     },
                     {
