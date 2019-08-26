@@ -11,6 +11,7 @@ import StartScreen       from '@/views/StartScreen.vue';
 import SelectRooms       from '@/views/SelectRooms';
 import PreviewBuild      from '@/views/PreviewBuild';
 import AdditionalOptions from '@/views/AdditionalOptions';
+import ResultScreen      from '@/views/ResultScreen';
 
 
 Vue.use(Router);
@@ -38,6 +39,11 @@ export default new Router({
             path     : '/step-3-of-3',
             name     : 'step3',
             component: AdditionalOptions,
+        },
+        {
+            path     : '/result',
+            name     : 'result',
+            component: ResultScreen,
         },
     ],
 });
