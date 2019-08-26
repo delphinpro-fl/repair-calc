@@ -19,6 +19,16 @@ module.exports = {
     runtimeCompiler    : false,
     parallel           : undefined,
 
+    devServer: {
+        proxy: {
+            '^/api': {
+                target: 'http://remont.local',
+                ws: true,
+                changeOrigin: true,
+            },
+        },
+    },
+
     pluginOptions: {
         prerenderSpa: {
             registry      : undefined,

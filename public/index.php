@@ -2,7 +2,7 @@
 
 define('DIR_ROOT', realpath('..'));
 
-function template(string $template, array $data = []): string
+function template($template, $data = [])
 {
     $template = str_replace('</head>', "\n\t{{HEAD}}\n</head>", $template);
     $template = str_replace('</body>', "\n\t{{BODY}}\n</body>", $template);
@@ -17,6 +17,32 @@ function template(string $template, array $data = []): string
 
         return '';
     }, $template);
+}
+
+
+$uri = trim($_SERVER['REQUEST_URI'], '/');
+$segments = explode('/', $uri);
+
+if (count($segments) && $segments[0] === 'api') {
+    array_shift($segments);
+    if (!count($segments)) {
+        header('Not Found', true, 404);
+        die;
+    }
+    $data = [];
+    $action = array_shift($segments);
+    switch ($action) {
+        case 'data':
+            $data['types'] = include '../private/data/types.php';
+            $data['prices'] = include '../private/data/prices.php';
+            break;
+        default:
+            header('Not Found', true, 404);
+            die;
+    }
+
+    echo json_encode($data, JSON_UNESCAPED_UNICODE);
+    die;
 }
 
 

@@ -182,7 +182,6 @@ export default {
         },
 
         onChangeParam(name, value) {
-            console.log({ name, value });
             this.$set(this.roomList[this.activeRoomIndex].params, name, value);
             let complete = checkCompleteRoom(this.activeRoom);
             this.$set(this.roomList[this.activeRoomIndex], 'complete', complete);
@@ -200,6 +199,12 @@ export default {
         },
 
         nextScreen() {
+            this.roomList = this.roomList.map(room => {
+                if ('wallsArea' in room) {
+                    room.wallsArea = wallsArea(room.params.area);
+                }
+                return room;
+            });
             this.$store.commit('updateRoomList', this.roomList);
             this.$router.push({ name: 'step3' });
         },

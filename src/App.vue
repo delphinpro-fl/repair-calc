@@ -8,6 +8,7 @@
 import AppHeader               from '@/components/App/AppHeader';
 import AppMenu                 from '@/components/App/AppMenu';
 import { EVENT_CLICK_OUTSIDE } from '@/library/constants';
+import AppToast                from '@/components/App/AppToast';
 
 
 export default {
@@ -16,6 +17,7 @@ export default {
     components: {
         AppHeader,
         AppMenu,
+        AppToast,
     },
 
     computed: {
@@ -25,9 +27,10 @@ export default {
     },
 
     mounted() {
-        this.$el.addEventListener('click', e=>{
+        this.$el.addEventListener('click', e => {
             this.$bus.$emit(EVENT_CLICK_OUTSIDE, -1);
         });
+        this.loadData();
     },
 
     methods: {
@@ -36,6 +39,16 @@ export default {
         },
         screenAfter(el) {
             el.classList.remove(this.$store.state.stepDirection);
+        },
+        async loadData() {
+            let response = await fetch('/api/data');
+            if (!response.ok) {
+                this.$store.commit('setToastMessage', `${response.status} ${response.statusText}`);
+            } else {
+                let data = await response.json();
+                this.$store.commit('updateTypes', data.types);
+                this.$store.commit('updatePrices', data.prices);
+            }
         },
     },
 };
@@ -57,5 +70,6 @@ export default {
             <router-view class="app__screen"/>
         </transition>
         <AppMenu></AppMenu>
+        <AppToast :msg="$store.state.toastMessage"></AppToast>
     </div>
 </template>
