@@ -5,6 +5,7 @@
  * licensed under the MIT license
  */
 
+import ResultCost   from '@/components/ResultCost';
 import IconDownload from '@/components/Icon/IconDownload';
 
 
@@ -13,6 +14,7 @@ export default {
 
     components: {
         IconDownload,
+        ResultCost,
     },
 
     data: () => ({
@@ -56,6 +58,7 @@ export default {
             <div class="result-screen__container container" :style="styles">
                 <div class="result-screen__wrapper">
                     <div class="result-screen__title">Стоимость и сроки ремонта</div>
+                    <ResultCost class="result-screen__cost"></ResultCost>
                 </div>
                 <div class="result-screen__footer">
                     <div class="result-screen__note">
