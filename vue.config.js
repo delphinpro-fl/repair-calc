@@ -2,16 +2,21 @@
  * Vue config
  */
 
-const NODE_ENV = process.env.NODE_ENV === 'development'
-    ? 'development'
-    : 'production';
+const path = require('path');
+
+const NODE_ENV = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+
+let indexTemplate = NODE_ENV === 'production'
+    ? path.join(__dirname, 'private/templates/index.php')
+    : path.join(__dirname, 'public/index.html');
 
 module.exports = {
     productionSourceMap: false,
-    publicPath         : undefined,
-    outputDir          : undefined,
+    publicPath         : '/',
+    indexPath          : NODE_ENV === 'production' ? '../private/templates/base.php' : 'index.html',
+    outputDir          : 'public_html',
     assetsDir          : 'design',
-    runtimeCompiler    : undefined,
+    runtimeCompiler    : false,
     parallel           : undefined,
 
     pluginOptions: {
@@ -24,6 +29,16 @@ module.exports = {
             headless      : true,
             onlyProduction: true,
         },
+    },
+
+    chainWebpack: config => {
+        config
+            .plugin('html')
+            .tap(args => {
+                args[0].minify   = true;
+                args[0].template = indexTemplate;
+                return args;
+            });
     },
 
     css: {
